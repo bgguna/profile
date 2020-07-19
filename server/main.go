@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/bgguna/me/contact"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 
@@ -36,6 +37,8 @@ func main() {
 			"message": "pong",
 		})
 	})
+
+	router.POST("/send", contact.HandleNewMsg())
 
 	log.Infof("Listening on http://%s:%s...", hostname, port)
 	router.Run(fmt.Sprintf("%s:%s", hostname, port))

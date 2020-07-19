@@ -1,10 +1,10 @@
 # bogdan.guna.me
 
-This project is a web application designed to host & serve my personal website.
+This is a simple web application through which I can present my recent work and for people to contact me.
 
 ## Tech Stack
 
-* backend: Ruby on Rails
+* backend: Go 
 * frontend: Vue.js
 * storage: SQLite
 

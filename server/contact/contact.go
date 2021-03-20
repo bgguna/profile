@@ -21,6 +21,9 @@ type contactMessage struct {
 // HandleNewMsg handles incoming messages from the Contact tab.
 func HandleNewMsg() func(context *gin.Context) {
 	return func(context *gin.Context) {
+		context.Header("Access-Control-Allow-Origin", "*")
+    	context.Header("Access-Control-Allow-Methods", "POST")
+
 		db, _ := sql.Open("sqlite3", "./storage/bgguna.db")
 		message := contactMessage{}
 		rawContextData, err := context.GetRawData()

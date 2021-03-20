@@ -2,6 +2,8 @@
 current_dir	=	${PWD}
 bin_dir		=	${current_dir}/bin
 out_dir		=	${current_dir}/out
+db_dir		=	${current_dir}/storage
+database	=	${db_dir}/bgguna.db
 binary		=   server
 project		=   bogdan.guna.me	
 main		=	main.go
@@ -27,6 +29,10 @@ clean:
 	rm -rf ${coverage}
 	@echo "Done cleaning."
 
+db:
+	@ echo "Checking database..."
+	@ if [ -f "${database}" ]; then (echo "Database already exists: ${database}") else (echo "Database not found. Creating database from file..."; sqlite3 ${database} < ${db_dir}/contact.sql; echo "Done setting up the database: ${database}") fi
+
 format:
 	@ echo "Formatting code..."
 	@ $(gofmt) $(modules)
@@ -39,22 +45,28 @@ lint:
 
 run-dev:
 	@ echo "Running in dev mode..."
+	@ make db
 	$(gorun) ${main}
 
 build:
-	@echo "Building binaries..."
+	@ echo "Running build command..."
+	@ echo "Step 1/3: TESTS"
+	@ make test
+	@ echo "Step 2/3: BUILD BINARIES"
 	$(gobuild) $(modules)
 	$(gobuild) -o ${bin_dir}/${binary} ./
-	@echo "Done building binaries."
+	@ echo "Done building binaries."
+	@ echo "Step 3/3: DATABASES"
+	@ make db
 
 run:
-	@echo "Running binary..."
+	@ echo "Running binary..."
 	${bin_dir}/${binary}
 
 test:
 	@ echo "Running tests with package level coverage..."
 	$(gotest) $(modules) -v -cover
-	@echo "Done running tests."
+	@ echo "Done running tests."
 
 coverage:
 	@ echo "Running tests and printing coverage report..."
@@ -70,6 +82,7 @@ help:
 	------------------------------\n\
 	* all:		formats, cleans, builds and tests the binaries\n\
 	* build:	builds binaries\n\
+	* run-dev:	runs the server in development mode\n\
 	* run:		runs the server\n\
 	* format:	formats the code to the Golang standards\n\
 	* lint:		highlights smells in the code\n\

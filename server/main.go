@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"os"
+	"net"
+	"errors"
 
 	"github.com/bgguna/me/contact"
 	"github.com/gin-contrib/cors"
@@ -12,8 +14,7 @@ import (
 )
 
 const (
-	hostname = "127.0.0.1"
-	port     = "3000"
+	port = "3000"
 )
 
 func init() {
@@ -26,20 +27,40 @@ func init() {
 }
 
 func main() {
-	log.Info("Server started...")
+	log.Info("Server started for bgguna.")
 
 	router := gin.Default()
 	router.Use(cors.Default())
 
-	// TODO: remove; this is used only for testing.
-	router.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-
+	// This is for handling CONTACT submissions.
 	router.POST("/send", contact.HandleNewMsg())
+
+	hostname, err := getLocalIP()
+	if err != nil {
+		log.Error("Failed to get IP address. Using localhost instead 😢...")
+		hostname = "127.0.0.1"
+	}
+
+	hostname = "127.0.0.1"
 
 	log.Infof("Listening on http://%s:%s...", hostname, port)
 	router.Run(fmt.Sprintf("%s:%s", hostname, port))
+}
+
+// getLocalIP returns the local IP of the host
+func getLocalIP() (string, error) {
+    addrs, err := net.InterfaceAddrs()
+    if err != nil {
+        return "", err
+	}
+	
+    for _, address := range addrs {
+        if ipnet, ok := address.(*net.IPNet); ok && !ipnet.IP.IsLoopback() {
+            if ipnet.IP.To4() != nil {
+                return ipnet.IP.String(), nil
+            }
+        }
+	}
+	
+    return "", errors.New("ip address not found")
 }

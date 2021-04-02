@@ -34,6 +34,7 @@ func main() {
 
 	// This is for handling CONTACT submissions.
 	router.POST("/send", contact.HandleNewMsg())
+	router.GET("/contacts", contact.GetMessages())
 
 	hostname, err := getLocalIP()
 	if err != nil {

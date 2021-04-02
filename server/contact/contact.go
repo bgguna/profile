@@ -12,10 +12,38 @@ import (
 
 // contactMessage represents the structure of an incoming contact message.
 type contactMessage struct {
+	Id		int `json:"id"`
 	Name    string `json:"name"`
 	Email   string `json:"email"`
 	Phone   string `json:"phone"`
 	Message string `json:"message"`
+}
+
+// GetMessages gets all the contact messages.
+func GetMessages() func(context *gin.Context) {
+	return func(context *gin.Context) {
+		context.Header("Access-Control-Allow-Origin", "*")
+		context.Header("Access-Control-Allow-Methods", "GET")
+		
+		db, _ := sql.Open("sqlite3", "./storage/bgguna.db")
+		
+		var messages = []contactMessage{}
+		log.Infof("Fetching contact messages...")
+		rows, err := db.Query("SELECT * FROM contact")
+		if err != nil {
+			log.Errorf("Error preparing to fetch all contact messages.", err)
+			context.JSON(http.StatusBadRequest, gin.H{"status": "fail"})
+		}
+
+		for rows.Next() {
+			var msg contactMessage
+			rows.Scan(&msg.Id, &msg.Name, &msg.Email, &msg.Phone, &msg.Message)
+			messages = append(messages, msg)
+		}
+
+		log.Infof("Fetched all contact messages.")
+		context.JSON(http.StatusOK, messages)
+	}
 }
 
 // HandleNewMsg handles incoming messages from the Contact tab.

@@ -22,12 +22,24 @@ gocover		=	go tool cover
 ldflags		=	"-s -w"
 modules		=	./...
 
+deep-clean:
+	@ echo "Running a deep clean operation..."
+	rm -rf ${bin_dir}
+	@ echo "Step 1/4: Deleted binaries."
+	rm -rf ${out_dir}
+	@ echo "Step 2/4: Deleted output files."
+	rm -rf ${coverage}
+	@ echo "Step 3/4: Deleted coverage files."
+	rm -rf ${database}
+	@ echo "Step 4/4: Deleted database."
+	@ echo "Done deep cleaning."
+
 clean:
-	@echo "Cleaning project repository..."
+	@ echo "Cleaning project repository..."
 	rm -rf ${bin_dir}
 	rm -rf ${out_dir}
 	rm -rf ${coverage}
-	@echo "Done cleaning."
+	@ echo "Done cleaning."
 
 db:
 	@ echo "Checking database..."
@@ -50,8 +62,8 @@ run-dev:
 
 build:
 	@ echo "Running build command..."
-	@ echo "Step 1/3: TESTS"
-	@ make test
+	#@ echo "Step 1/3: TESTS"
+	#@ make test
 	@ echo "Step 2/3: BUILD BINARIES"
 	$(gobuild) $(modules)
 	$(gobuild) -o ${bin_dir}/${binary} ./
@@ -75,7 +87,7 @@ coverage:
 	@ echo "Done writing test coverage report."
 
 help:
-	@echo "\
+	@ echo "\
 	Manual for Server\n\
 	\n\
 	Available make commands:\n\

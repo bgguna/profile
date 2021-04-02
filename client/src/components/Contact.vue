@@ -8,42 +8,28 @@
     <div>
       <b-form @submit="onSubmit" @reset="onReset" v-if="show">
         <b-form-group id="input-group-1" label="Email:" label-for="input-1">
-          <b-form-input
-            id="input-1"
-            v-model="form.email"
-            type="email"
-            required
-            placeholder="enter your email address"
-          ></b-form-input>
+          <b-form-group-prepend is-text>
+            <b-icon icon="envelope"></b-icon>
+          </b-form-group-prepend>
+          <b-form-input id="input-1" v-model="form.email" type="email" required placeholder="enter your email address"></b-form-input>
         </b-form-group>
 
         <b-form-group id="input-group-2" label="Phone:" label-for="input-2">
-          <b-form-input
-            id="input-2"
-            v-model="form.phone"
-            required
-            placeholder="enter your phone number"
-          ></b-form-input>
+          <b-form-group-prepend is-text>
+            <b-icon icon="telephone"></b-icon>
+          </b-form-group-prepend>
+          <b-form-input id="input-2" v-model="form.phone" placeholder="enter your phone number"></b-form-input>
         </b-form-group>
 
         <b-form-group id="input-group-3" label="Name:" label-for="input-3">
-          <b-form-input
-            id="input-3"
-            v-model="form.name"
-            required
-            placeholder="enter your name"
-          ></b-form-input>
+          <b-form-group-prepend is-text>
+            <b-icon icon="person-fill"></b-icon>
+          </b-form-group-prepend>
+          <b-form-input id="input-3" v-model="form.name" required placeholder="enter your name"></b-form-input>
         </b-form-group>
 
         <b-form-group id="input-group-4" label="Message:">
-          <b-form-textarea
-            id="input-4"
-            v-model="form.message"
-            placeholder="write your message"
-            rows="3"
-            max-rows="6"
-          ></b-form-textarea>
-
+          <b-form-textarea id="input-4" v-model="form.message" placeholder="write your message" rows="3" max-rows="9" required></b-form-textarea>
           <pre class="mt-3 mb-0">{{ text }}</pre>
         </b-form-group>
 
@@ -151,7 +137,7 @@ export default {
   padding-right: 10px;
   padding-bottom: 20px;
 
-  max-width: 380px;
+  max-width: 450px;
 }
 
 .button {

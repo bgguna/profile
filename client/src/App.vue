@@ -2,22 +2,32 @@
   <v-app>
     <div>
       <div class="side-profile">
-        <b-button v-b-toggle.profile variant="outline-dark" size="sm"><b-icon-list></b-icon-list></b-button>
-        <b-sidebar id="profile" title="bogdan guna" backdrop shadow>
+        <b-button v-b-toggle.profile variant="outline-dark" size="sm">
+          <span class="when-closed"><b-icon icon="chevron-right"/></span>
+        </b-button>
+        <b-sidebar class="profile" id="profile" shadow>
           <div class="sidebar-info">
-            <img src="@/assets/images/profile_bw.jpg" width="135px" height="200px">
-            <p>
-              Hello there!
-            </p>
+            <br>
+            <div class="profile-img" align="center">
+              <img src="@/assets/images/profile_bw.jpg" width="100px" height="100px">
+            </div>  
+            <div class="profile-description" align="center">
+              <p>
+                <b>Bogdan Guna</b><br>
+                Software Engineer<br>
+                London
+              </p>
+            </div>
+            <div class="profile-urls" align="center">
+              <b-button href="https://github.com/bgguna" pill variant="outline-dark" size="sm"><b-icon icon="github" variant="secondary"/></b-button>
+              <b-button href="https://instagram.com/bgguna" pill variant="outline-dark" size="sm"><b-icon icon="instagram" variant="secondary"/></b-button>
+              <b-button href="https://t.me/bgguna" pill variant="outline-dark" size="sm"><b-icon icon="envelope" variant="secondary"/></b-button>
+            </div>
           </div>
         </b-sidebar>
       </div>
       <div class="tabs">
-        <v-tabs
-          background-color="white"
-          color="black"
-          right
-        >
+        <v-tabs background-color="white" color="black" right>
           <v-tab>about me</v-tab>
           <v-tab>contact me</v-tab>
 
@@ -41,6 +51,7 @@ import VueAxios from 'vue-axios';
 
 import About from '@/components/About.vue'
 import Contact from '@/components/Contact.vue'
+
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -68,8 +79,13 @@ export default {
   max-width: 600px;
 }
 
-.sidebar-info {
+.profile {
+  max-width: 200px;
+}
+
+.collapse-info {
   padding-left: 25px;
   padding-right: 25px;
 }
+
 </style>

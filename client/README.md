@@ -1,4 +1,4 @@
-# Client for bogdan.guna.me
+# Client
 
 The client for this web application is built using [Vue.js](https://vuejs.org).
 

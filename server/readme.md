@@ -1,4 +1,4 @@
-# Server for bogdan.guna.me
+# Server
 
 The server for this web application is built using [Go](https://golang.org).
 

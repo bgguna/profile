@@ -1,10 +1,18 @@
-# bogdan.guna.me
+# `bogdan.guna.me`
 
-This is a simple web application through which I can present my recent work and for people to contact me.
+This is a simple web application to present my recent work.
 
-## Tech Stack
+It has a profile sidebar, `about` section and a `contact` form to get in touch.
 
-* backend: Go 
-* frontend: Vue.js
-* storage: SQLite
+### Future Work
 
+* add authentication
+* add ability to view/handle contact messages in the browser (requires auth)
+* add a `projects` section where my recent work will be summarised
+* add insight (commits, build version, etc.) tino profile sidebar
+* dockerise the application
+
+### Components
+
+* [server](server/)
+* [client](client/)

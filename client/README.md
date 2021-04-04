@@ -1,6 +1,11 @@
-# client
+# Client for bogdan.guna.me
 
-## Project setup
+The client for this web application is built using [Vue.js](https://vuejs.org).
+
+* [npm](https://www.npmjs.com) is used as a package manager
+* [bootstrap vue](https://bootstrap-vue.org) is the used framework for the web components and style
+
+### Project setup
 
 ```
 npm install
@@ -12,7 +17,7 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Compiles for production
 
 ```
 npm build

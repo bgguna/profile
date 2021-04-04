@@ -1,6 +1,7 @@
 <template>
   <div class="contact">
     <h1>{{ msg }}</h1>
+    <br>
     <p>
       Please complete the form to get in touch.<br />
       Your details stay with me.
@@ -138,6 +139,7 @@ export default {
   padding-bottom: 20px;
 
   max-width: 450px;
+  margin: 0 auto;
 }
 
 .button {

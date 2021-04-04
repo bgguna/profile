@@ -9,8 +9,9 @@
           <div class="sidebar-info">
             <br>
             <div class="profile-img" align="center">
-              <img src="@/assets/images/profile_bw.jpg" width="100px" height="100px">
-            </div>  
+              <img src="@/assets/images/profile_bw.jpg" width="100px" height="100px"/>
+            </div>
+            <br>
             <div class="profile-description" align="center">
               <p>
                 <b>Bogdan Guna</b><br>
@@ -18,10 +19,17 @@
                 London
               </p>
             </div>
-            <div class="profile-urls" align="center">
-              <b-button href="https://github.com/bgguna" pill variant="outline-dark" size="sm"><b-icon icon="github" variant="secondary"/></b-button>
-              <b-button href="https://instagram.com/bgguna" pill variant="outline-dark" size="sm"><b-icon icon="instagram" variant="secondary"/></b-button>
-              <b-button href="https://t.me/bgguna" pill variant="outline-dark" size="sm"><b-icon icon="envelope" variant="secondary"/></b-button>
+            <br>
+            <div class="profile-icons" align="center">
+              <b-avatar icon="github" href="https://github.com/bgguna" variant="light" size="2em" />
+              <b-avatar icon="instagram" href="https://instagram.com/bgguna" variant="light" size="2em" />
+              <b-avatar icon="chat-text" href="https://t.me/bgguna" variant="light" size="2em" />
+              <b-avatar icon="envelope" href="mailto:bogdan@guna.me" variant="light" size="2em" />
+            </div>
+            <div class="profile-footer" align="center">
+              <footer>
+                <small>Made with ❤️ by Bogdan.</small>
+              </footer>
             </div>
           </div>
         </b-sidebar>
@@ -80,12 +88,19 @@ export default {
 }
 
 .profile {
-  max-width: 200px;
+  max-width: 150px;
 }
 
-.collapse-info {
+.profile-footer {
+  position: absolute;
+  width: 240px;
+  margin: 0 auto;
+  bottom: 5px;
+}
+
+.sidebar-info {
   padding-left: 25px;
   padding-right: 25px;
+  max-width: 300px;
 }
-
 </style>

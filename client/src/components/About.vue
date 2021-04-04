@@ -1,6 +1,7 @@
 <template>
   <div class="about">
     <h1>{{ msg }}</h1>
+    <br>
     <p>
       My name is Bogdan and I'm a Software Engineer 💻 based in London 🇬🇧.
     </p>
@@ -30,5 +31,7 @@ export default {
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 </style>

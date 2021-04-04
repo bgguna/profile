@@ -6,15 +6,13 @@
     <p>
       I graduated from The University of Manchester with a Master of Engineering
       in Computer Science in 2015. Since then, I've worked as a backend engineer
-      at a fintech company, designing, building and maintaining enterprise
-      applications and services in Java and Go. I like building stuff,
-      experimenting with different technologies, and my goal is to become a
-      confident full-stack engineer.
+      in the fintech industry, designing, building and maintaining enterprise
+      applications and services in Java and Go.
     </p>
     <p>
-      On a different note, I'm an outdoors enthusiast ⛰, explorer 🗺, runner 🏃‍♂️
-      and coffee snob ☕️. I sometimes fiddle with my camera 📷 and play the
-      guitar 🎸.
+      I'm also a great outdoors enthusiast ⛰, cyclist 🚲, runner 🏃‍♂️ and
+      somewhat, a coffee snob ☕️. On most days, you can also find me fiddling
+      with my camera 📷 or my guitar 🎸.
     </p>
   </div>
 </template>

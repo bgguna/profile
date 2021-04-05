@@ -6,7 +6,7 @@ import (
 	"net"
 	"errors"
 
-	"github.com/bgguna/me/contact"
+	"github.com/bgguna/profile/server/contact"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 

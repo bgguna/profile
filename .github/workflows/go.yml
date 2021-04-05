@@ -28,4 +28,5 @@ jobs:
         #run: go test -v ./...
 
     - name: Build
-      run: go build -v -o bin/server ./
+      #run: go build -v -o bin/server ./
+      run: pwd && go build -v ./...
